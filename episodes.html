@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Define play and pause button svgs -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-play" viewBox="0 0 24 24">
+          <polygon points="6,4 20,12 6,20" />
+        </symbol>
+      
+        <symbol id="icon-pause" viewBox="0 0 24 24">
+          <rect x="6" y="4" width="4" height="16"/>
+          <rect x="14" y="4" width="4" height="16"/>
+        </symbol>
+    </svg>
+
     <header>
         <nav class="navbar">
             <ul>
@@ -17,5 +29,89 @@
          </nav>
     </header>
     <main>
+        <p></p>
+        <div id="episodes-container">
+            <!-- First epsiode -->
+            <div class="episode">
+                <!-- Audio player button -->
+                <div class="episode-text">
+                    <p class="episode-title">1. Mic Test</p>
+                    <p class="episode-description">Is this thing on?</p>
+                </div>
+                <div class="audio-player">
+                    <audio src="episodes/Mic Test.m4a"></audio>
+                    <button class="play-pause">
+                    <svg class="icon play-icon" width="24" height="24" fill="white">
+                        <use xlink:href="#icon-play"></use>
+                    </svg>
+                    <svg class="icon pause-icon" width="24" height="24" fill="white" style="display:none;">
+                        <use xlink:href="#icon-pause"></use>
+                    </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Second epsiode -->
+            <div class="episode">
+                <!-- Audio player button -->
+                <div class="episode-text">
+                    <p class="episode-title">2. Happy Birthday!</p>
+                    <p class="episode-description">Riley turns 22!</p>
+                </div>
+                <div class="audio-player">
+                    <audio src="episodes/Mic Test.m4a"></audio>
+                    <button class="play-pause">
+                    <svg class="icon play-icon" width="24" height="24" fill="white">
+                        <use xlink:href="#icon-play"></use>
+                    </svg>
+                    <svg class="icon pause-icon" width="24" height="24" fill="white" style="display:none;">
+                        <use xlink:href="#icon-pause"></use>
+                    </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+          
     </main>
+
+    <script>
+        document.querySelectorAll('.audio-player').forEach(player => {
+          const audio = player.querySelector('audio');
+          const button = player.querySelector('.play-pause');
+          const playIcon = player.querySelector('.play-icon');
+          const pauseIcon = player.querySelector('.pause-icon');
+      
+          button.addEventListener('click', () => {
+            if (audio.paused) {
+              // Pause all other audio elements
+              document.querySelectorAll('audio').forEach(a => {
+                if (a !== audio) {
+                  a.pause();
+                  const parent = a.closest('.audio-player');
+                  parent.querySelector('.play-icon').style.display = 'block';
+                  parent.querySelector('.pause-icon').style.display = 'none';
+                }
+              });
+      
+              audio.play();
+              playIcon.style.display = 'none';
+              pauseIcon.style.display = 'block';
+            } else {
+              audio.pause();
+              playIcon.style.display = 'block';
+              pauseIcon.style.display = 'none';
+            }
+          });
+      
+          // Optional: update icon when audio ends
+          audio.addEventListener('ended', () => {
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+          });
+        });
+      </script>
 </body>
+
+
+  

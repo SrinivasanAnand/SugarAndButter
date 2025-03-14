@@ -12,6 +12,7 @@
     font-style: normal;
 }
 
+/* Home page */
 header {
     display: flex;
     justify-content: flex-end;
@@ -66,6 +67,77 @@ h1 {
     transform: translateX(-15px);
 }
 
+/* Episodes page */
+#episodes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.episode {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 20rem;
+    margin-top: 1rem;
+}
+
+.episode-text {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.episode-title {
+    color: white;
+    font-family: "Inria Serif";
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.episode-description {
+    color: white;
+    font-family: "Inria Serif";
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+.audio-player {
+    display: inline-flex;
+    align-items: center;
+}
+  
+.play-pause {
+    background-color: #F3DAD2;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* About page */
+
+#about-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#about-description {
+    color: white;
+    font-family: "Inria Serif";
+    font-size: 1.5rem;
+    width: 40rem;
+    text-align: center;
+}
+#about-pic {
+    width: 28rem;
+}
+  
+
+
 @media (max-width: 700px) {
 
     header {
@@ -81,5 +153,30 @@ h1 {
 
     h1 {
         font-size: 3.8rem;
+    }
+
+    .episode {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        gap: 2rem;
+    }
+
+    .episode-text {
+        width: 15rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .episode-title {
+        width: 15rem;
+    }
+
+    #about-description {
+        font-size: 0.8rem;
+        width: 20rem;
+    }
+    #about-pic {
+        width: 20rem;
     }
 }
